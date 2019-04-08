@@ -1,0 +1,146 @@
+﻿body {
+    padding-top: 80px;
+    padding-bottom: 10px;
+}
+
+/* Set padding to keep content from hitting the edges */
+/*.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}*/
+
+.navbar {
+    margin-bottom: 0px;
+    padding: 10px 10px;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+    .navbar img {
+        width: 70%;
+    }
+
+@media (max-width: 400px) {
+    .navbar-header {
+        position: relative;
+    }
+
+    .navbar img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 70%;
+    }
+}
+
+.navbar-default {
+    background-color: #fff;
+    border-color: #E46713;
+}
+
+.cbp-af-header-shrink {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    opacity: 0.9;
+}
+
+.navbar-brand img {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20%;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*for menu*/
+.btn-group-vertical > .btn-group > .btn {
+    width: 289px;
+    height: 43px;
+    font-size: large;
+    max-width: 100%;
+}
+
+.btn-default {
+    border-color: #E46713;
+    box-shadow: 0 0 1px #ccc;
+    -webkit-transition-duration: 0.8s;
+    -webkit-transition-timing-function: linear;
+    box-shadow: 0px 0 0 #E46713 inset;
+}
+
+    .btn-default:hover {
+        box-shadow: 289px 0 0 #EF833A inset;
+    }
+
+
+.btn-change {
+    border-color: #E46713;
+    /*box-shadow: 0 0 1px #ccc;*/
+    -webkit-transition: all 0.5s ease-in-out;
+}
+
+    .btn-change:hover {
+        -webkit-transform: scale(1.1);
+        background: #EF833A;
+    }
+
+/* Cards*/
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    transition: 0.5s;
+
+    margin: 10px 10px 25px 10px;
+    
+}
+
+    .card .productImage {
+        width: 300px;
+        height: 300px;
+    }
+
+    .card:hover {
+        box-shadow: 0 5px 5px 0 #E46713;
+    }
+
+.productName {
+    padding: 2px 16px;
+    background-color: #2e1e69;
+    opacity: 0.9;
+    color: #ddd;
+    /*color: rgba(0,0,0,0.5);*/
+}
+/* Cards end*/
+
+footer {
+    /*background-color: #29166F;
+    color: #fff;*/
+    background-color: #29166F;
+    color: #ddd;
+    padding: 30px;
+    text-align: center;
+}
+
+.hr-footer {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #EF833A;
+    margin: 1em 0;
+    padding: 0;
+}

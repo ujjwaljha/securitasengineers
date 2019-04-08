@@ -1,0 +1,78 @@
+﻿@model SecuritasEngineering.Web.VeiwModel.ProductViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Product.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Product.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.Label("Category", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Category", null, htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Product_ID"><span style="display: none">@Html.DisplayNameFor(m => m.Product.ID)</span> Category</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Product.ID, new SelectList(Model.Categories, "ID", "Name"), "Select", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Manufacturer", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @for (int i = 0; i < Model.Manufacturers.Count; i++)
+                {
+                    @Html.CheckBoxFor(m => m.Manufacturers[i].IsChecked)
+                    <label>@Model.Manufacturers[i].Name</label>
+                    @Html.HiddenFor(m => m.Manufacturers[i].ID)
+                    @Html.HiddenFor(m => m.Manufacturers[i].Name)
+                }
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.ImageURL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="ImageFile" name="ImageFile" type="file" require>
+                @Html.ValidationMessageFor(model => model.Product.ImageURL, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@Html.Partial("_LoginPartial")
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

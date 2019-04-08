@@ -1,0 +1,35 @@
+﻿@model SecuritasEngineering.Web.Models.Product
+
+@{
+    ViewBag.Title = "Product";
+}
+
+<h2>@Model.Name</h2>
+
+<div>
+    <hr />
+    <div class="col-md-6 col-sm-12">
+        @if (!string.IsNullOrEmpty(Model.ImageURL))
+        {
+            <img src="@Model.ImageURL" width="300" />
+        }
+    </div>
+    <div class="col-md-6 col-sm-12">
+        <dl class="dl-horizontal">
+            @if (ViewBag.Manufacturers != null && ViewBag.Manufacturers.Count > 0)
+            {
+                <h4>Manufacturer</h4>
+                foreach (var item in ViewBag.Manufacturers)
+                {
+                    <div>@item</div>
+                }
+                <br />
+                <br />
+            }
+            <h4>Category</h4>
+            <div>@ViewBag.Category</div>
+        </dl>
+    </div>
+    
+</div>
+

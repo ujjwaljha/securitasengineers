@@ -1,0 +1,96 @@
+﻿@using System.Data.Entity
+@using SecuritasEngineering.Web.Models
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Securitas Engineers</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+@{
+    ApplicationDbContext db = new ApplicationDbContext();
+    var Manufacturers =  db.Manufacturers.Select(m => new { m.ID, m.Name});
+    var Categories = db.Categories.Select(m => new { m.ID, m.Name });
+}
+
+<nav class="navbar navbar-default navbar-fixed-top cbp-af-header">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/"> <img src="~/Content/images/logo.jpg"/></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manufacturer <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        @foreach (var item in Manufacturers)
+                        {
+                            <li><a href="/manufacturer/@item.ID">@item.Name</a></li>
+                        }
+                        @*<li><a href="#">Elcom</a></li>
+                        <li><a href="#">Gorlan</a></li>
+                        <li><a href="#">Hensel</a></li>
+                        <li><a href="#">Lapp</a></li>
+                        <li><a href="#">Phoenix</a></li>
+                        <li><a href="#">Schneider</a></li>
+                        <li><a href="#">Trinity Touch</a></li>*@
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        
+                        @foreach (var item in Categories)
+                        {
+                            <li><a href="/category/@item.ID">@item.Name</a></li>
+                        }
+                        
+                        @*<li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>*@
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container body-content">
+    @RenderBody()
+
+</div>
+
+
+<footer class="container-fluid">
+    <p>&copy; @DateTime.Now.Year - Securitas Engineers</p>
+</footer>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+
+<script src="~/Scripts/classie.js"></script>
+<script src="~/Scripts/cbpAnimatedHeader.js"></script>
+
+</body>
+</html>
